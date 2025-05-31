@@ -16,7 +16,6 @@ import { useRouter } from 'vue-router'
 import { RoutesPath } from '../../router/router.ts'
 import LargeButton from '../../components/UI/LargeButton.vue'
 import Button from '../../components/UI/Button.vue'
-import InstallPWA from '../../components/InstallPWA.vue'
 
 const { push } = useRouter()
 </script>
@@ -108,7 +107,6 @@ const { push } = useRouter()
 					</div>
 				</LargeButton>
 			</div>
-			<InstallPWA />
 			<LargeButton
 				@click="
 					() => {
