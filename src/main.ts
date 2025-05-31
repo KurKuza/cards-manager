@@ -5,6 +5,7 @@ import App from './App.vue'
 import VueSortable from 'vue3-sortablejs'
 import { createPinia } from 'pinia'
 import { router } from './router/router.ts'
+import { useThemeStore } from './store/useThemeStore.ts'
 
 // Обработчик ошибок MediaSession API для предотвращения ошибок из расширений Chrome
 if ('mediaSession' in navigator) {
@@ -43,4 +44,9 @@ const pinia = createPinia()
 app.use(router)
 app.use(VueSortable)
 app.use(pinia)
+
+// Initialize theme
+const themeStore = useThemeStore()
+themeStore.initTheme()
+
 app.mount('#app')
