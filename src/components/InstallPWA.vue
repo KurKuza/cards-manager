@@ -2,6 +2,11 @@
 import { ref, onMounted } from 'vue'
 import LargeButton from './UI/LargeButton.vue'
 
+// Add type definition for the Safari navigator extension
+interface SafariNavigator extends Navigator {
+	standalone?: boolean
+}
+
 const deferredPrompt = ref<any>(null)
 const isInstallable = ref<boolean>(false)
 const debugInfo = ref<string>('Ожидание события beforeinstallprompt...')
@@ -22,7 +27,7 @@ onMounted(() => {
 	// Дополнительная проверка на уже установленное приложение
 	if (
 		window.matchMedia('(display-mode: standalone)').matches ||
-		window.navigator.standalone === true
+		(window.navigator as SafariNavigator).standalone === true
 	) {
 		debugInfo.value = 'Приложение уже установлено'
 		console.log('Приложение уже установлено в режиме standalone')
