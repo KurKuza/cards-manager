@@ -1,43 +1,35 @@
-<script>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import LargeButton from './UI/LargeButton.vue'
 
-export default {
-	setup() {
-		const deferredPrompt = ref(null)
-		const isInstallable = ref(false)
+const deferredPrompt = ref<any>(null)
+const isInstallable = ref<boolean>(false)
 
-		onMounted(() => {
-			// Слушаем событие beforeinstallprompt
-			window.addEventListener('beforeinstallprompt', (e) => {
-				e.preventDefault()
-				deferredPrompt.value = e
-				isInstallable.value = true
-			})
-		})
+onMounted(() => {
+	// Слушаем событие beforeinstallprompt
+	window.addEventListener('beforeinstallprompt', (e: Event) => {
+		e.preventDefault()
+		deferredPrompt.value = e
+		isInstallable.value = true
+	})
+})
 
-		const installPWA = async () => {
-			if (deferredPrompt.value) {
-				deferredPrompt.value.prompt() // показываем запрос на установку
-				const choiceResult = await deferredPrompt.value.userChoice
+const installPWA = async () => {
+	if (deferredPrompt.value) {
+		deferredPrompt.value.prompt() // показываем запрос на установку
+		const choiceResult = await deferredPrompt.value.userChoice
 
-				// Проверка выбора пользователя
-				if (choiceResult.outcome === 'accepted') {
-					console.log('PWA установлено')
-				} else {
-					console.log('PWA установка отменена')
-				}
-
-				// Сбрасываем событие
-				deferredPrompt.value = null
-				isInstallable.value = false
-			}
+		// Проверка выбора пользователя
+		if (choiceResult.outcome === 'accepted') {
+			console.log('PWA установлено')
+		} else {
+			console.log('PWA установка отменена')
 		}
 
-		return {
-			installPWA,
-			isInstallable,
-		}
-	},
+		// Сбрасываем событие
+		deferredPrompt.value = null
+		isInstallable.value = false
+	}
 }
 </script>
 
