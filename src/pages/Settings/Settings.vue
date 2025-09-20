@@ -43,7 +43,7 @@ const { push } = useRouter()
 			</div>
 			<ThemeSelector />
 
-			<div
+			<!-- <div
 				class="setting-item flex items-center justify-between mb-4 px-2 py-3 opacity-50 mt-6"
 			>
 				<div class="flex-1 mr-2">
@@ -54,13 +54,12 @@ const { push } = useRouter()
 						Карты становятся больше, удобно при большой диагонале устройства
 					</div>
 				</div>
-				<!--        <CheckBox/>-->
 				<div class="text-sm px-2 py-1 bg-blue-500 rounded text-white">
 					В разработке
 				</div>
-			</div>
+			</div> -->
 
-			<div
+			<!-- <div
 				class="setting-item flex items-center justify-between mb-4 px-2 py-3 opacity-50"
 			>
 				<div class="flex-1 mr-2">
@@ -71,13 +70,12 @@ const { push } = useRouter()
 						Карты становятся больше, удобно при маленькой диагонале устройства
 					</div>
 				</div>
-				<!--        <CheckBox/>-->
 				<div class="text-sm px-2 py-1 bg-blue-500 rounded text-white">
 					В разработке
 				</div>
-			</div>
+			</div> -->
 
-			<div class="grid grid-cols-2 gap-3 mb-4">
+			<div class="grid grid-cols-2 gap-3 mb-4 mt-6">
 				<LargeButton
 					@click="
 						() => {
@@ -114,6 +112,7 @@ const { push } = useRouter()
 					</div>
 				</LargeButton>
 			</div>
+
 			<LargeButton
 				@click="
 					() => {
